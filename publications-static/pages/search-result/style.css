@@ -21,8 +21,7 @@ button{
 header{
     display: flex;
     width: 100%;
-    /*height: 300px;*/
-    margin: 0 0 0 0;
+    margin: 0 0 33px 0;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -46,9 +45,26 @@ header{
     border-radius: 56px;
 }
 
-.header__title{
+.header__block{
+    display: flex;
+    align-items: center;
     margin: 50px 0 13px 0;
+}
+
+.header__title{
+    margin: 0;
     font-size: 40px;
+}
+
+.back-button{
+    align-items: center;
+    justify-content: center;
+    margin: 0 563px 0 0;
+    width: 120px;
+    height: 62px;
+    background: rgba(84, 84, 84, 0.4);
+    border: 1px solid #FFFBFB;
+    border-radius: 30px;
 }
 
 .info-block__info{
@@ -77,3 +93,59 @@ li{
 }
 
 /*----------------*/
+.main__block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 59px 0;
+    width: 1855px;
+    height: 725px;
+    background: rgba(217, 217, 217, 0.1);
+    box-shadow: inset 60.5px -60.5px 60.5px rgba(165, 165, 165, 0.1), inset -60.5px 60.5px 60.5px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(33.275px);
+    border-radius: 56px;
+}
+
+.main__block-results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 23px 17px;
+    width: 1791px;
+    height: 650px;
+    background: rgba(255, 251, 251, 0.7);
+    border-radius: 31px;
+}
+
+.block-results__count{
+    margin: 0 1513px 16px 0;
+    font-size: 18px;
+    color: black;
+}
+
+.block-results__table{
+    font-size: 18px;
+    color: black;
+    line-height: 20px;
+}
+
+.main-row{
+    height: 36px;
+    background: rgba(17, 17, 17, 0.59);
+    box-shadow: inset 0 -1px 0 #111111;
+    color: white;
+}
+
+.block-results__table-item{
+    padding: 8px 16px;
+    background: rgba(255, 251, 251, 0.1);
+    box-shadow: inset 0 -1px 0 rgba(17, 17, 17, 0.08);
+    font-weight: 400;
+}
+
+.block-results__button{
+    margin: 41px 0 0 0;
+    background: rgba(84, 84, 84, 0.74);
+}
+
+

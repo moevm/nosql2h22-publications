@@ -13,7 +13,12 @@
 <body>
 <header>
     <div class="container">
-        <h1 class="header__title">Поиск научных публикаций</h1>
+        <div class="header__block">
+            <button class="back-button">
+                <img src="../../assets/arrow.svg" alt="" class="back-button__svg">
+            </button>
+            <h1 class="header__title">Поиск научных публикаций</h1>
+        </div>
         <div class="header__info-block">
             <div class="info-block__info">
                 <ul class="info">
@@ -29,7 +34,32 @@
 <main>
     <div class="container">
         <div class="main__block">
-
+            <div class="main__block-results">
+                <div class="block-results__count">
+                    Количество результатов:
+                </div>
+                <table class="block-results__table">
+                    <tr class="block-results__table-row main-row">
+                        <td class="block-results__table-item">Название</td>
+                        <td class="block-results__table-item">Авторы</td>
+                        <td class="block-results__table-item">Год публикации</td>
+                        <td class="block-results__table-item">Издание</td>
+                        <td class="block-results__table-item">API</td>
+                        <td class="block-results__table-item">Краткое описание</td>
+                    </tr>
+                    <tr class="block-results__table-row">
+                        <td class="block-results__table-item">ПРИМЕНЕНИЕ ВЕРОЯТНОСТНЫХ И ВРЕМЕННЫХ АВТОМАТОВ В ПРОГРАММАХ УПРАВЛЕНИЯ МНОГОАГЕНТНЫХ СИСТЕМ</td>
+                        <td class="block-results__table-item">Беляев Сергей Алексеевич</td>
+                        <td class="block-results__table-item">2020</td>
+                        <td class="block-results__table-item">Наукоемкие технологии в космических исследованиях Земли</td>
+                        <td class="block-results__table-item">Google Scholar</td>
+                        <td class="block-results__table-item">Рассмотрены классические модели временного и вероятностного автомата, построенного с использованием теории цепей Маркова - система «автомат - случайная среда», описываемая цепью Маркова...</td>
+                    </tr>
+                </table>
+                <button class="main-button block-results__button">
+                    Экспорт
+                </button>
+            </div>
         </div>
     </div>
 </main>
