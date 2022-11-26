@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Publications</title>
+<body>
+<header>
+    <div class="container">
+        <div class="header__buttons">
+            <button class="button-main button-import">
+                Импорт БД
+            </button>
+            <button class="button-main button-export">
+                Экспорт БД
+            </button>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="main__block">
+            <h1 class="main__title">
+                Поиск научных публикаций
+            </h1>
+            <form action="" class="main__form">
+                <fieldset class="main__form-fieldset">
+                    <input type="text" id="fio" placeholder="ФИО" class="input__item">
+                    <input type="text" id="name" placeholder="Название публикации" class="input__item">
+                    <input type="text" id="year" placeholder="Год публикации" class="input__item">
+                    <input type="text" id="organization" placeholder="Организация" class="input__item">
+                    <select name="type-edition" id="type-edition" class="input__item">
+                        <option value="journal" class="select__item">Журнал</option>
+                        <option value="conference" class="select__item">Конференция</option>
+                    </select>
+                    <!--<input type="text" id="type-edition" placeholder="Тип издания" class="input__item">-->
+                    <input type="text" id="name-edition" placeholder="Название издания" class="input__item">
+                    <input type="text" id="quotes" placeholder="Количество цитат" class="input__item">
+                    <!--<input type="text" id="api" placeholder="API" class="input__item">-->
+                    <select name="api" id="api" class="input__item">
+                        <option value="google-scholar" class="select__item">Google Scholar</option>
+                        <option value="cyber-leninka" class="select__item">КиберЛенинка</option>
+                        <option value="publons-api" class="select__item">Publons API</option>
+                    </select>
+                    <!--<input type="text" id="index" placeholder="Индекс" class="input__item">-->
+                    <select name="index" id="index" class="input__item">
+                        <option value="vak" class="select__item">ВАК</option>
+                        <option value="scopus" class="select__item">Scopus</option>
+                        <option value="rinz" class="select__item">РИНЦ</option>
+                    </select>
+                </fieldset>
+            </form>
+            <input type="submit" value="Поиск" class="button-main main__search-button"/>
+
+        </div>
+    </div>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
