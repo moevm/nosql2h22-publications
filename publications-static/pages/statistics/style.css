@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    overflow-x: hidden;
+    background: url("../../assets/bg.png") no-repeat;
+    background-size: 100%;
+    color: white;
+}
+
+button{
+    cursor: pointer;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1600px;
+}
+
+.main__block{
+    display: flex;
+    flex-direction: column;
+    width: 1600px;
+    min-height: 900px;
+    margin: 101px 0 79px 0;
+    padding: 56px 57px 94px 79px;
+    background: rgba(217, 217, 217, 0.1);
+    box-shadow: inset 60.5px -60.5px 60.5px rgba(165, 165, 165, 0.1), inset -60.5px 60.5px 60.5px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(33.275px);
+    border-radius: 56px;
+}
+
+.back-button{
+    align-items: center;
+    justify-content: center;
+    margin: 0 400px 0 0;
+    width: 120px;
+    height: 62px;
+    background: rgba(84, 84, 84, 0.4);
+    border: 1px solid #FFFBFB;
+    border-radius: 30px;
+}
+
+.main__block-desc{
+    display: flex;
+    margin: 0 0 32px 0;
+}
+
+.main__block-title{
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.main__block-stats{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.block-stats__info{
+    display: flex;
+    margin: 0 0 15px 0;
+}
+
+.stats__info-text{
+    margin: 10px 50px 0 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.input__item{
+    width: 400px;
+    height: 50px;
+    background: rgba(255, 251, 251, 0.7);
+    border-radius: 31px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 0 65px 0;
+    cursor: pointer;
+    color: rgba(84, 84, 84, 0.5);
+}
+
+.input__item::-webkit-input-placeholder{
+    color: rgba(84, 84, 84, 0.5);
+}
+
+
+.block-stats__diagram-block{
+    display: flex;
+    width: 1430px;
+    height: 655px;
+    background-color: rgba(84, 84, 84, 0.4);
+    filter: drop-shadow(0px 4px 20px rgba(91, 71, 188, 0.3));
+    border-radius: 20px;
+}
