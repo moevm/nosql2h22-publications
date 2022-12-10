@@ -5,6 +5,7 @@ import './style.scss';
 import Selector from 'components/Selector/Selector';
 
 import useNavigateSearch from 'hooks/useNavigateQuery';
+import Title from 'components/Title/Title';
 
 const optionAPI = [
     {
@@ -13,7 +14,7 @@ const optionAPI = [
     },
     {
         text: 'КиберЛенинка',
-        value: 'Lenin'
+        value: 'lenin'
     },
     {
         text: 'Publons API',
@@ -29,9 +30,8 @@ const optionEditionType = [
     {
         text: 'Конференция',
         value: 'conference'
-    }
-    
-]
+    }  
+];
 
 const MainPage = () => {
 
@@ -65,26 +65,56 @@ const MainPage = () => {
                     <Button onClick={exportDB} type='medium' text='Экспорт БД'/>
                 </div>
                 <div className="main__actions wrapper">
+                    <Title text='Поиск научных публикаций'/>
                     <div className="main__inputs">
-                        <Input placeholder='ФИО' value={inputs.FIO} onChange={e => handleChange('FIO', e.target.value)}/>
-                        <Input placeholder='Название публикации' value={inputs.publication} onChange={e => handleChange('publication', e.target.value)}/>
-                        <Input placeholder='Год публикации' value={inputs.year} onChange={e => handleChange('year', e.target.value)}/>
-                        <Input placeholder='Организация' value={inputs.organisation} onChange={e => handleChange('organisation', e.target.value)}/>
+                        <Input 
+                            placeholder='ФИО' 
+                            value={inputs.FIO} 
+                            onChange={e => handleChange('FIO', e.target.value)}
+                            className='main__input'
+                        />
+                        <Input 
+                            placeholder='Название публикации' 
+                            value={inputs.publication} 
+                            onChange={e => handleChange('publication', e.target.value)}
+                            className='main__input'
+                        />
+                        <Input 
+                            placeholder='Год публикации' 
+                            value={inputs.year} 
+                            onChange={e => handleChange('year', e.target.value)}
+                            className='main__input'
+                        />
+                        <Input 
+                            placeholder='Организация' 
+                            value={inputs.organisation} 
+                            onChange={e => handleChange('organisation', e.target.value)}
+                            className='main__input'
+                        />
                         <Selector 
                             placeholder='Тип издания' 
                             value={inputs.edition_type} 
                             onChange={e => handleChange('edition_type', e.target.value)}
-                            option={optionEditionType}
+                            options={optionEditionType}
+                            className='main__selector'
                         />
-                        <Input placeholder='Название издания' value={inputs.edition} onChange={e => handleChange('edition', e.target.value)}/>
+                        <Input 
+                            placeholder='Название издания'   
+                            value={inputs.edition} 
+                            onChange={e => handleChange('edition', e.target.value)}
+                            className='main__input'
+                        />
                         <Selector 
                             placeholder='API' 
                             value={inputs.api} 
                             onChange={e => handleChange('api', e.target.value)}
                             options={optionAPI}
+                            className='main__selector'
                         />
                     </div>
-                    <Button onClick={() => navigate('/search', inputs)}/>
+                    <Button text='Поиск' onClick={() => {
+                        navigate('/search', inputs);
+                    }}/>
                 </div>
             </div>
         </div>

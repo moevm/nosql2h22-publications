@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.scss'
-const Selector = ({onChange, value, options = [], placeholder}) => {
+const Selector = ({onChange, value, options = [], placeholder, className}) => {
     return(
-        <select className='selector' onChange={onChange} value={value}>
+        <select className={`selector ${className}`} onChange={onChange} value={value}>
             <option value="">
                 {
                     placeholder

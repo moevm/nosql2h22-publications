@@ -66,5 +66,9 @@ input{
 }
 
 .wrapper{
-
+  padding: 65px 55px;
+  background: rgba(217, 217, 217, 0.1);
+  box-shadow: inset 60.5px -60.5px 60.5px rgba(165, 165, 165, 0.1), inset -60.5px 60.5px 60.5px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(33.275px);
+  border-radius: 56px;
 }

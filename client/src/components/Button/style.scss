@@ -1,0 +1,22 @@
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 10px;
+    background: rgba(84, 84, 84, 0.4);
+    border: 1px solid #FFFBFB;
+    border-radius: 31px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FFFBFB;
+    &_medium{
+        width: 300px;
+    }
+    &_small{
+        width: 120px;
+    }
+    &_large{
+        width: 360px;
+    }
+}
