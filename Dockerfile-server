@@ -12,5 +12,7 @@ RUN apt install -y mongodb
 COPY /server /server
 WORKDIR /server
 RUN npm install
-CMD service mongodb start && node server.js
+CMD service mongodb start && \
+    mongoimport --jsonArray --db data --collection publications --file data/data.json && \
+    node server.js
 
