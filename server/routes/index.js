@@ -1,5 +1,4 @@
-const noteRoutes = require('./hello-api.js');
+const noteRoutes = require('./publication-api.js');
 module.exports = function(app, db) {
   noteRoutes(app, db);
-  // Тут, позже, будут и другие обработчики маршрутов 
 };

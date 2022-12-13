@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: url('/assets/mainBg.jpg');
+    background: url('/assets/mainBg.jpg') center / contain no-repeat;
+    background-color: #000;
     &__actions{
         display: flex;
         flex-direction: column;
