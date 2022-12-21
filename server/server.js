@@ -11,16 +11,11 @@ const port = 8000;
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-require('./routes')(app);
-app.listen(port, function(){
-    console.log("Сервер ожидает подключения...");
-});
-
-// MongoClient.connect('mongodb://127.0.0.1:27017/', (err, database) => {
-//     if (err) return console.log(err);
-//     require('./routes')(app, database.db("test"));
+MongoClient.connect(process.env.DATABASE_URI, (err, database) => {
+    if (err) return console.log(err);
+    require('./routes')(app, database.db("publications"));
     
-//     app.listen(port, function(){
-//         console.log("Сервер ожидает подключения...");
-//     });
-// });
+    app.listen(port, function(){
+        console.log("Сервер ожидает подключения...");
+    });
+});
