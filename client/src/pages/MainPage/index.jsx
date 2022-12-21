@@ -10,39 +10,56 @@ import Title from 'components/Title/Title';
 const optionAPI = [
     {
         text: 'Google Scholar',
-        value: 'google'
+        value: 'Google Scholar'
     },
     {
         text: 'КиберЛенинка',
-        value: 'lenin'
+        value: 'CyberLeninka'
     },
     {
-        text: 'Publons API',
-        value: 'publons'
+        text: 'Elibrary',
+        value: 'elibrary'
     }
 ];
 
 const optionEditionType = [
     {
         text: 'Журнал',
-        value: 'journal'
+        value: 'Журнал'
     },
     {
         text: 'Конференция',
-        value: 'conference'
+        value: 'Конференция'
     }  
 ];
+
+const optionIndex = [
+    {
+        text: 'ВАК',
+        value: 'ВАК'
+    },
+    {
+        text: 'РИНЦ',
+        value: 'РИНЦ',
+    },
+    {
+        text: 'Scopus',
+        value: 'Scopus',
+    },
+]
 
 const MainPage = () => {
 
     const [inputs, setInputs] = useState({
-        FIO: '',
-        publication: '',
-        year: '',
-        organisation: '',
-        edition: '',
-        edition_type: '',
-        api: '',
+        FIO: null,
+        name_publication: null,
+        year_publication: null,
+        name_organization: null,
+        name_edition: null,
+        type_edition: null,
+        API: null,
+        index: null,
+        number_quotes: null,
     });
 
     const handleChange = (name, value) => {
@@ -75,20 +92,23 @@ const MainPage = () => {
                         />
                         <Input 
                             placeholder='Название публикации' 
-                            value={inputs.publication} 
-                            onChange={e => handleChange('publication', e.target.value)}
+                            value={inputs.name_publication} 
+                            onChange={e => handleChange('name_publication', e.target.value)}
                             className='main__input'
                         />
                         <Input 
+                            type='number'
+                            min={1000}
+                            max={2023}
                             placeholder='Год публикации' 
-                            value={inputs.year} 
-                            onChange={e => handleChange('year', e.target.value)}
+                            value={inputs.year_publication} 
+                            onChange={e => handleChange('year_publication', e.target.value)}
                             className='main__input'
                         />
                         <Input 
                             placeholder='Организация' 
-                            value={inputs.organisation} 
-                            onChange={e => handleChange('organisation', e.target.value)}
+                            value={inputs.name_organization} 
+                            onChange={e => handleChange('name_organization', e.target.value)}
                             className='main__input'
                         />
                         <Selector 
@@ -100,15 +120,30 @@ const MainPage = () => {
                         />
                         <Input 
                             placeholder='Название издания'   
-                            value={inputs.edition} 
-                            onChange={e => handleChange('edition', e.target.value)}
+                            value={inputs.type_edition} 
+                            onChange={e => handleChange('type_edition', e.target.value)}
+                            className='main__input'
+                        />
+                        <Input
+                            type='number'
+                            min={0}
+                            placeholder='Количество цитат'
+                            value={inputs.number_quotes}
+                            onChange={e => handleChange('number_quotes', e.target.value)}
                             className='main__input'
                         />
                         <Selector 
                             placeholder='API' 
-                            value={inputs.api} 
-                            onChange={e => handleChange('api', e.target.value)}
+                            value={inputs.API} 
+                            onChange={e => handleChange('API', e.target.value)}
                             options={optionAPI}
+                            className='main__selector'
+                        />
+                        <Selector 
+                            placeholder='index' 
+                            value={inputs.index} 
+                            onChange={e => handleChange('index', e.target.value)}
+                            options={optionIndex}
                             className='main__selector'
                         />
                     </div>

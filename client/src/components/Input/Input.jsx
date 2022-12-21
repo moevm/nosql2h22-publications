@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.scss'
-const Input = ({placeholder, onChange, value, className}) => {
+const Input = ({placeholder, onChange, value, className, ...props}) => {
     return(
-        <input className={`input ${className}`} placeholder={placeholder} onChange={onChange} value={value}/>
+        <input {...props} className={`input ${className}`} placeholder={placeholder} onChange={onChange} value={value}/>
     );
 }
 export default Input;
