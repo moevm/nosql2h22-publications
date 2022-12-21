@@ -137,15 +137,15 @@ const MainPage = () => {
                         />
                         <Selector 
                             placeholder='Тип издания' 
-                            value={inputs.edition_type} 
-                            onChange={e => handleChange('edition_type', e.target.value)}
+                            value={inputs.type_edition} 
+                            onChange={e => handleChange('type_edition', e.target.value)}
                             options={optionEditionType}
                             className='main__selector'
                         />
                         <Input 
                             placeholder='Название издания'   
-                            value={inputs.type_edition} 
-                            onChange={e => handleChange('type_edition', e.target.value)}
+                            value={inputs.name_edition} 
+                            onChange={e => handleChange('name_edition', e.target.value)}
                             className='main__input'
                         />
                         <Input
@@ -172,7 +172,10 @@ const MainPage = () => {
                         />
                     </div>
                     <Button text='Поиск' onClick={() => {
-                        navigate('/search', inputs);
+                        let inputsClear = Object.keys(inputs)
+                            .filter((k) => inputs[k] != null)
+                            .reduce((a, k) => ({ ...a, [k]: inputs[k] }), {});
+                        navigate('/search', inputsClear);
                     }}/>
                 </div>
             </div>
