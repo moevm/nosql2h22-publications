@@ -51,7 +51,7 @@ const SearchPage = () => {
                 <div className="wrapper search__wrapper">
                     <div className="search__params">
                         {
-                            Array.from(searchParams.values()).map((item, index) => (
+                            Array.from(searchParams.values()).filter(item => item).map((item, index) => (
                                 <span key={index} className='search__param'>{item}</span>
                             ))
                         }
