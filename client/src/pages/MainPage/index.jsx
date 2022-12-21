@@ -3,9 +3,9 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import './style.scss';
 import Selector from 'components/Selector/Selector';
-
 import useNavigateSearch from 'hooks/useNavigateQuery';
 import Title from 'components/Title/Title';
+
 
 const optionAPI = [
     {
@@ -72,14 +72,38 @@ const MainPage = () => {
     const navigate = useNavigateSearch();
 
     const importDB = () => {}
-    const exportDB = () => {}
+    const exportDB = async () => {
+        let data = await fetch('http://localhost:8000/api/v1/export', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        if(!data.ok){
+            console.error(data);
+        } else{
+            data = await data.json();
+            //console.log(data);
+            /*const file = new Blob(JSON.stringify(data), {type: 'application/json'});
+            const element = document.createElement("a");
+            element.href = URL.createObjectURL(file);
+            element.download = "export_data.json";
+            document.body.appendChild(element); 
+            element.click();*/
+            let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+            let dlAnchorElem = document.createElement("a");
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "export_data.json");
+            dlAnchorElem.click();
+        }
+    }
  
     return(
         <div className='main'>
             <div className="main__container">
                 <div className="main__buttons">
                     <Button onClick={importDB} type='medium' text='Импорт БД'/>
-                    <Button onClick={exportDB} type='medium' text='Экспорт БД'/>
+                    <Button onClick={exportDB} type='medium' text='Экспорт БД' value="download"/>
                 </div>
                 <div className="main__actions wrapper">
                     <Title text='Поиск научных публикаций'/>
