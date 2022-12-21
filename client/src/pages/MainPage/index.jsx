@@ -71,7 +71,37 @@ const MainPage = () => {
 
     const navigate = useNavigateSearch();
 
-    const importDB = () => {}
+    const importDB = async () => {
+        const upload = document.createElement("input");
+        upload.setAttribute("type", "file");
+        upload.addEventListener('change', function (e) {
+            try {
+                const upload = e.target.files[0];
+                const reader = new FileReader();
+                reader.addEventListener('load', (function (file) {
+                    return async function (e) {
+                        let json = JSON.parse(e.target.result);
+                        let data = await fetch('http://localhost:8000/api/v1/import', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(json)
+                        });
+                        console.log(json);
+                    }
+                })(upload));
+                reader.readAsText(upload);
+                  
+            }
+            catch (ex) {
+                console.log(ex);
+            }
+        });
+        upload.click();
+    }
+    
+
     const exportDB = async () => {
         let data = await fetch('http://localhost:8000/api/v1/export', {
             method: 'GET',
@@ -83,13 +113,6 @@ const MainPage = () => {
             console.error(data);
         } else{
             data = await data.json();
-            //console.log(data);
-            /*const file = new Blob(JSON.stringify(data), {type: 'application/json'});
-            const element = document.createElement("a");
-            element.href = URL.createObjectURL(file);
-            element.download = "export_data.json";
-            document.body.appendChild(element); 
-            element.click();*/
             let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
             let dlAnchorElem = document.createElement("a");
             dlAnchorElem.setAttribute("href", dataStr);
@@ -102,7 +125,7 @@ const MainPage = () => {
         <div className='main'>
             <div className="main__container">
                 <div className="main__buttons">
-                    <Button onClick={importDB} type='medium' text='Импорт БД'/>
+                    <Button onClick={importDB} type='medium' text='Импорт БД' value = "load"/>
                     <Button onClick={exportDB} type='medium' text='Экспорт БД' value="download"/>
                 </div>
                 <div className="main__actions wrapper">
