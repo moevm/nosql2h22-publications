@@ -148,7 +148,10 @@ const MainPage = () => {
                         />
                     </div>
                     <Button text='Поиск' onClick={() => {
-                        navigate('/search', inputs);
+                        let inputsClear = Object.keys(inputs)
+                            .filter((k) => inputs[k] != null)
+                            .reduce((a, k) => ({ ...a, [k]: inputs[k] }), {});
+                        navigate('/search', inputsClear);
                     }}/>
                 </div>
             </div>

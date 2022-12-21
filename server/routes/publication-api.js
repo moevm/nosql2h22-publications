@@ -2,7 +2,12 @@ module.exports = function(app, db) {
     app.post('/api/v1/publication', async (req, res) => {
         const {page, params} = req.body;
         const nPerPage = 10;
-        const data =  db.collection('publications').find({})
+        const filterParams = {
+            ...params,
+            number_quotes: {$gte: params.number_quotes},
+            FIO: {$regex: params.FIO}
+        }
+        const data =  db.collection('publications').find(filterParams)
         const total = await data.count();
         data
         .skip( page * nPerPage)
