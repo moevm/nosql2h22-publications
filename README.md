@@ -30,7 +30,10 @@
 2) Нажать кнопку «Экспорт БД»
 
 ## Видео работы приложения
+Для просмотра кликните на видео.
+
 [![Watch the video](https://i.ibb.co/BKhxRR0/2022-12-22-11-12-00.png)](https://drive.google.com/drive/folders/1Le8bSCF9PRDTtacgrbb3i7fA0J3rk1SO?hl=ru)
+
 
 
 
