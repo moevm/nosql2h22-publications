@@ -88,7 +88,6 @@ const MainPage = () => {
                             },
                             body: JSON.stringify(json)
                         });
-                        console.log(json);
                     }
                 })(upload));
                 reader.readAsText(upload);

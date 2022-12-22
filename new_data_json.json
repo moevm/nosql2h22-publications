@@ -1,0 +1,13 @@
+[{
+    "id_publication": "40",
+    "FIO": ["Тот самый Иванов Иван Иванович"],
+    "name_publication": "Все об Иванове",
+    "year_publication": 2022,
+    "name_organization": "Санкт-Петербургский государственный электротехнический университет «ЛЭТИ»",
+    "type_edition": "Журнал",
+    "name_edition": "Жизнь Иванова",
+    "number_quotes": 100,
+    "API": "elibrary",
+    "index": "BAC",
+    "description": "Это описание жизни знаменитого Иванова Ивана Ивановича"
+}]

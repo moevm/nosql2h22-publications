@@ -3,7 +3,6 @@ module.exports = function(app, db) {
         async function getAllPublications() {
             try {
                 const tmp = await db.collection('publications').find().toArray();
-                console.log(tmp);
                 res.send(tmp)
                  
             }catch(err) {
