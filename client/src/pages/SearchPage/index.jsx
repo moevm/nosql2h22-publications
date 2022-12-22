@@ -1,9 +1,7 @@
 import BackButton from 'components/BackButton/BackButton';
 import Title from 'components/Title/Title';
 import React from 'react';
-import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {useLocation} from "react-router-dom";
 import './style.scss';
 
 import {paramsToObject} from 'helpers/urlParamsToObject';
