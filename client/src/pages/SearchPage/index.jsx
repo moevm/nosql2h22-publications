@@ -34,6 +34,26 @@ const SearchPage = () => {
         setCurrentPage(page);
     }
 
+    const exportDB = async (params) => {
+        let data = await fetch('http://localhost:8000/api/v1/export-table', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({params: params}),
+        });
+        if(!data.ok){
+            console.error(data);
+        } else{
+            data = await data.json();
+            let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+            let dlAnchorElem = document.createElement("a");
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "export_table.json");
+            dlAnchorElem.click();
+        }
+    }
+
     React.useEffect(() => {
         const obj = paramsToObject(searchParams.entries());
         getSearchData({params: obj, page: currentPage});
@@ -108,7 +128,7 @@ const SearchPage = () => {
                             }
                         </div>
                         <div className="search-table__btn">
-                            <Button text='Экспорт' onClick={() => {}}/>
+                            <Button text='Экспорт' onClick={() => {exportDB(paramsToObject(searchParams.entries()))}} value="download"/>
                         </div>
                     </div> : <Title text='К сожалению, по заданным параметрам не удалось найти публикации.'/>
                 }

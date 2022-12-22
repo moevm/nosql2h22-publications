@@ -3,9 +3,9 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import './style.scss';
 import Selector from 'components/Selector/Selector';
-
 import useNavigateSearch from 'hooks/useNavigateQuery';
 import Title from 'components/Title/Title';
+
 
 const optionAPI = [
     {
@@ -71,15 +71,62 @@ const MainPage = () => {
 
     const navigate = useNavigateSearch();
 
-    const importDB = () => {}
-    const exportDB = () => {}
+    const importDB = async () => {
+        const upload = document.createElement("input");
+        upload.setAttribute("type", "file");
+        upload.addEventListener('change', function (e) {
+            try {
+                const upload = e.target.files[0];
+                const reader = new FileReader();
+                reader.addEventListener('load', (function (file) {
+                    return async function (e) {
+                        let json = JSON.parse(e.target.result);
+                        let data = await fetch('http://localhost:8000/api/v1/import', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(json)
+                        });
+                        console.log(json);
+                    }
+                })(upload));
+                reader.readAsText(upload);
+                  
+            }
+            catch (ex) {
+                console.log(ex);
+            }
+        });
+        upload.click();
+    }
+    
+
+    const exportDB = async () => {
+        let data = await fetch('http://localhost:8000/api/v1/export', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        if(!data.ok){
+            console.error(data);
+        } else{
+            data = await data.json();
+            let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+            let dlAnchorElem = document.createElement("a");
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "export_data.json");
+            dlAnchorElem.click();
+        }
+    }
  
     return(
         <div className='main'>
             <div className="main__container">
                 <div className="main__buttons">
-                    <Button onClick={importDB} type='medium' text='Импорт БД'/>
-                    <Button onClick={exportDB} type='medium' text='Экспорт БД'/>
+                    <Button onClick={importDB} type='medium' text='Импорт БД' value = "load"/>
+                    <Button onClick={exportDB} type='medium' text='Экспорт БД' value="download"/>
                 </div>
                 <div className="main__actions wrapper">
                     <Title text='Поиск научных публикаций'/>
