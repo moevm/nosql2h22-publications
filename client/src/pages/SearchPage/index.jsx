@@ -6,7 +6,7 @@ import './style.scss';
 
 import {paramsToObject} from 'helpers/urlParamsToObject';
 import Button from 'components/Button/Button';
-
+import { Link } from 'react-router-dom';
 
 const SearchPage = () => {
     const [searchParams] = useSearchParams();
@@ -110,7 +110,7 @@ const SearchPage = () => {
                                 {
                                     searchData.map(item => (
                                         <tr key={item.id_publication} className="search-table__row">
-                                            <td>{item.name_publication}</td>
+                                            <td><Link to={`/publication/${item['_id']}`} className="search__link">{item.name_publication}</Link></td>
                                             <td>{
                                                 item.FIO.map((man, index) => <span key={index}>{man},</span>)
                                             }</td>

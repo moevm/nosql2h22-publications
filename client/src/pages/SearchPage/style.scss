@@ -40,6 +40,10 @@
         padding: 39px 50px;
         margin-bottom: 30px;
     }
+    &__link{
+        color: rgb(98, 65, 187);
+        cursor: pointer;
+    }
     &-table{
         display: flex;
         flex-direction: column;
