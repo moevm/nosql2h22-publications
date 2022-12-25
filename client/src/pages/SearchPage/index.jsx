@@ -6,6 +6,7 @@ import './style.scss';
 
 import {paramsToObject} from 'helpers/urlParamsToObject';
 import Button from 'components/Button/Button';
+import { Link } from 'react-router-dom';
 
 const SearchPage = () => {
     const [searchParams] = useSearchParams();
@@ -91,13 +92,25 @@ const SearchPage = () => {
                                     <th>Издание</th>
                                     <th>API</th>
                                     <th>Краткое описание</th>
+                                    {
+                                        searchParams.get('number_quotes') ? <th>Количество цитат</th> : null
+                                    }
+                                    {
+                                        searchParams.get('type_edition') ? <th>Типа издания</th> : null
+                                    }
+                                    {
+                                        searchParams.get('index') ? <th>Индекс</th> : null
+                                    }
+                                    {
+                                        searchParams.get('name_organization') ? <th>Организация</th> : null
+                                    }
                                 </tr>
                             </thead>
                             <tbody className="search-table__body">
                                 {
                                     searchData.map(item => (
                                         <tr key={item.id_publication} className="search-table__row">
-                                            <td>{item.name_publication}</td>
+                                            <td><Link to={`/publication/${item['_id']}`} className="search__link">{item.name_publication}</Link></td>
                                             <td>{
                                                 item.FIO.map((man, index) => <span key={index}>{man},</span>)
                                             }</td>
@@ -105,6 +118,18 @@ const SearchPage = () => {
                                             <td>{item.name_edition}</td>
                                             <td>{item.API}</td>
                                             <td>{item.description.slice(0, 100) + '...'}</td>
+                                            {
+                                                searchParams.get('number_quotes') ? <td>{item.number_quotes}</td> : null
+                                            }
+                                            {
+                                                searchParams.get('type_edition') ? <td>{item.type_edition}</td> : null
+                                            }
+                                            {
+                                                searchParams.get('index') ? <td>{item.index}</td> : null
+                                            }
+                                            {
+                                                searchParams.get('name_organization') ? <td>{item.name_organization}</td> : null
+                                            }
                                         </tr>
                                     ))
                                 }
