@@ -50,6 +50,7 @@
         background: rgba(255, 251, 251, 0.7);
         border-radius: 31px;
         border: 1px solid #000;
+        overflow-x: auto;
         &__amount{
             align-self: flex-start;
             margin-bottom: 15px;
@@ -60,6 +61,7 @@
         }
         &__table{
             margin-bottom: 20px;
+            align-self: baseline;
         }
         &__head{
             color: #FFFBFB;

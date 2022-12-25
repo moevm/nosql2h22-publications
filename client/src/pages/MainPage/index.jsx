@@ -53,19 +53,29 @@ const MainPage = () => {
     const [inputs, setInputs] = useState({
         FIO: null,
         name_publication: null,
-        year_publication: null,
+        year_publication: {},
         name_organization: null,
         name_edition: null,
         type_edition: null,
         API: null,
         index: null,
-        number_quotes: null,
+        number_quotes: {},
     });
 
     const handleChange = (name, value) => {
         setInputs({
             ...inputs, 
             [name]: value,
+        });
+    }
+
+    const handleChangeRange = (name, second, value) => {
+        setInputs({
+            ...inputs, 
+            [name]: {
+                ...inputs[name],
+                [second]: value
+            },
         });
     }
 
@@ -142,15 +152,27 @@ const MainPage = () => {
                             onChange={e => handleChange('name_publication', e.target.value)}
                             className='main__input'
                         />
-                        <Input 
-                            type='number'
-                            min={1000}
-                            max={2023}
-                            placeholder='Год публикации' 
-                            value={inputs.year_publication} 
-                            onChange={e => handleChange('year_publication', e.target.value)}
-                            className='main__input'
-                        />
+                        <div className="main-range main__input">
+                            <Input 
+                                type='number'
+                                min={1000}
+                                max={inputs.year_publication.to || 2023}
+                                placeholder='Год(от)' 
+                                value={inputs.year_publication.from} 
+                                onChange={e => handleChangeRange('year_publication', 'from', e.target.value)}
+                                className='main-range__input'
+                            />
+                            <Input 
+                                type='number'
+                                min={inputs.year_publication.from || 1000}
+                                max={2023}
+                                placeholder='Год(до)' 
+                                value={inputs.year_publication.to} 
+                                onChange={e => handleChangeRange('year_publication', 'to', e.target.value)}
+                                className='main-range__input'
+                            />
+                        </div>
+
                         <Input 
                             placeholder='Организация' 
                             value={inputs.name_organization} 
@@ -170,14 +192,26 @@ const MainPage = () => {
                             onChange={e => handleChange('name_edition', e.target.value)}
                             className='main__input'
                         />
-                        <Input
-                            type='number'
-                            min={0}
-                            placeholder='Количество цитат'
-                            value={inputs.number_quotes}
-                            onChange={e => handleChange('number_quotes', e.target.value)}
-                            className='main__input'
-                        />
+                        <div className="main-range main__input">
+                            <Input
+                                type='number'
+                                min={0}
+                                max={inputs.number_quotes.to || 'none'}
+                                placeholder='Цитаты(от)'
+                                value={inputs.number_quotes.from} 
+                                onChange={e => handleChangeRange('number_quotes', 'from', e.target.value)}
+                                className='main-range__input'
+                            />
+                            <Input
+                                type='number'
+                                min={inputs.number_quotes.from || 0}
+                                placeholder='Цитаты(до)'
+                                value={inputs.number_quotes.to} 
+                                onChange={e => handleChangeRange('number_quotes', 'to', e.target.value)}
+                                className='main-range__input'
+                            />
+                        </div>
+                        
                         <Selector 
                             placeholder='API' 
                             value={inputs.API} 
@@ -195,8 +229,11 @@ const MainPage = () => {
                     </div>
                     <Button text='Поиск' onClick={() => {
                         let inputsClear = Object.keys(inputs)
-                            .filter((k) => inputs[k] != null)
-                            .reduce((a, k) => ({ ...a, [k]: inputs[k] }), {});
+                            .filter((k) => inputs[k] !== null && (inputs[k].constructor === Object ? Object.keys(inputs[k]).length !== 0 : true))
+                            .reduce((a, k) => {
+                                const value = inputs[k].constructor === Object ? JSON.stringify(inputs[k]) : inputs[k];
+                                return ({ ...a, [k]: value })
+                            }, {});
                         navigate('/search', inputsClear);
                     }}/>
                 </div>
