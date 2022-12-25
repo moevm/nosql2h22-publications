@@ -15,7 +15,7 @@ function App() {
                     <Route path="/" element={<MainPage />} />
                     <Route path="/search" element={<SearchPage />} />
                     <Route path="/graph" element={<GraphPage />} />
-                    <Route path="/publication/[id]" element={<DescriptionPage />} />
+                    <Route path="/publication/:id" element={<DescriptionPage />} />
                 </Routes>
             </BrowserRouter>
         </div>
