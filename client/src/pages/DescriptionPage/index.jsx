@@ -1,21 +1,21 @@
 import BackButton from 'components/BackButton/BackButton';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import {useLocation} from "react-router-dom";
 import './style.scss';
 
 const DescriptionPage = () => {
-    const [searchParams] = useSearchParams();
+    const id = useParams();
     const [data, setData] = useState({});
 
-    const getDescription = async (params) => {
+    const getDescription = async () => {
         let data = await fetch('http://localhost:8000/api/v1/description', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({params: params}),
+            body: JSON.stringify({params: id}),
         });
         if(!data.ok){
             console.error(data);
@@ -27,39 +27,39 @@ const DescriptionPage = () => {
     }
 
     React.useEffect(() => {
-        const id = searchParams.get('id');
-        getDescription(id);
-    }, [searchParams]);
+        console.log(id);
+        getDescription();
+    }, [id]);
 
 
     return(
         <div className='description'>
-            <div class="description__container">
-                <div class="description__block">
-                    <div class="description__block-desc">
+            <div className="description__container">
+                <div className="description__block">
+                    <div className="description__block-desc">
                         <BackButton link='/search'/>
-                        <h1 class="description__block-title">
+                        <h1 className="description__block-title">
                             Описание публикации
                         </h1>
                     </div>
-                    <div class="description-block-info">
-                        <h2 class="description-block-info__title">
+                    <div className="description-block-info">
+                        <h2 className="description-block-info__title">
                             {data.name_publication}
                         </h2>
-                        <div class="description-block-info__author">
+                        <div className="description-block-info__author">
                             {data.FIO}
                         </div>
-                        <div class="description-block-info__edition">
-                            <div class="description-block-info__type-edition">Тип издания: {data.type_edition}</div>
-                            <div class="description-block-info__name-edition">{data.name_edition}</div>
+                        <div className="description-block-info__edition">
+                            <div className="description-block-info__type-edition">Тип издания: {data.type_edition}</div>
+                            <div className="description-block-info__name-edition">{data.name_edition}</div>
                         </div>
-                        <div class="description-block-info__year-and-index">
-                            <div class="description-block-info__year">{data.year_publication}</div>
-                            <div class="description-block-info__index">{data.index}</div>
+                        <div className="description-block-info__year-and-index">
+                            <div className="description-block-info__year">{data.year_publication}</div>
+                            <div className="description-block-info__index">{data.index}</div>
                         </div>
-                        <div class="description-block-info__annotation">
-                            <div class="description-block-info__annotation-title">Аннотация:</div>
-                            <div class="description-block-info_annotation-text">{data.description}</div>
+                        <div className="description-block-info__annotation">
+                            <div className="description-block-info__annotation-title">Аннотация:</div>
+                            <div className="description-block-info_annotation-text">{data.description}</div>
                         </div>
                     </div>
                 </div>
