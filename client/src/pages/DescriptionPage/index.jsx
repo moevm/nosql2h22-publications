@@ -22,12 +22,10 @@ const DescriptionPage = () => {
         } else{
             data = await data.json();
             setData(data);
-            console.log(data);
         }
     }
 
     React.useEffect(() => {
-        console.log(id);
         getDescription();
     }, [id]);
 
@@ -37,7 +35,7 @@ const DescriptionPage = () => {
             <div className="description__container">
                 <div className="description__block">
                     <div className="description__block-desc">
-                        <BackButton link='/search'/>
+                        <BackButton link={-1}/>
                         <h1 className="description__block-title">
                             Описание публикации
                         </h1>
@@ -56,6 +54,10 @@ const DescriptionPage = () => {
                         <div className="description-block-info__year-and-index">
                             <div className="description-block-info__year">{data.year_publication}</div>
                             <div className="description-block-info__index">{data.index}</div>
+                        </div>
+                        <div className="description-block-info__edition">
+                            <div className="description-block-info__type-edition">Организация: {data.name_organization}</div>
+                            <div className="description-block-info__name-edition">Количество цитат: {data.number_quotes}</div>
                         </div>
                         <div className="description-block-info__annotation">
                             <div className="description-block-info__annotation-title">Аннотация:</div>

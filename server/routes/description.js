@@ -5,7 +5,6 @@ module.exports = function(app, db) {
                 const {id} = req.body.params;
                 let findId = require('mongodb').ObjectId(id);
                 const data = await db.collection('publications').find({_id: findId}).toArray();
-                console.log(data[0])
                 res.send(data[0]);
                  
             }catch(err) {
