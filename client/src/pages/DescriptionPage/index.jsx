@@ -47,7 +47,7 @@ const DescriptionPage = () => {
                             {data.name_publication}
                         </h2>
                         <div className="description-block-info__author">
-                            {data.FIO}
+                            {data.FIO && data.FIO.map((man, index) => <span key={index}>{man},</span>)}
                         </div>
                         <div className="description-block-info__edition">
                             <div className="description-block-info__type-edition">Тип издания: {data.type_edition}</div>
